@@ -1,1 +1,35 @@
-/target
+# Rust build files
+/target/
+**/target/
+
+# Rust dependency directories
+/Cargo.lock
+/Cargo.toml
+
+# Local project configurations
+/.idea/
+/.vscode/
+
+# MacOS specific
+.DS_Store
+
+# Rust language server files
+/.rustup/
+
+# JetBrains (IntelliJ, PhpStorm, etc) configuration files
+.idea/
+
+# VS Code settings
+.vscode/
+
+# Rust coverage reports
+/coverage/
+
+# Cargo test output
+/tests/test_output/
+
+# Environment-specific configuration
+.env
+
+# Backup files
+*~
