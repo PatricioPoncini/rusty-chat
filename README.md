@@ -27,3 +27,11 @@ Make sure you have the following installed:
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
+
+### Testing the Frontend with the Backend
+
+If you want to test the frontend with the backend, you can clone the repository [https://github.com/dreamsofcode-io/chatly-web](https://github.com/dreamsofcode-io/chatly-web), install dependencies with `npm i`, and start the development server with `npm run dev`. The frontend will be available on port `:5173`, ready for testing.
+
+## References
+
+- [I never thought I'd use Socket.io ever again](https://www.youtube.com/watch?v=HEhhWL1oUTM)  
