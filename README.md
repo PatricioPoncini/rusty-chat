@@ -10,16 +10,16 @@ RustyChat is a simple, real-time chat application built with **Rust** using the 
 
 ## Tech Stack
 
-- **Rust**: The backend is built with Rust for fast performance and memory safety.
-- **socketioxide**: WebSocket library for handling real-time communication.
-- **Axum**: A web framework for building APIs.
-- **Tokio**: Asynchronous runtime for executing the server.
-- **Serde**: Serialization and deserialization of data in JSON format.
-- **Tracing**: For logging and tracking events.
+[![Tech Stack](https://skillicons.dev/icons?i=rust,html,css,js)](https://skillicons.dev)
 
 ## Installation
 
-To get started with RustyChat, clone the repository and run the project with `cargo run`.
+To get started with RustyChat, clone the repository, create a `.env` file with the `PORT` variable, and run the project using `cargo run`.
+
+### Example of .env file
+```bash
+PORT=3000 # any port you want
+```
 
 ### Prerequisites
 
@@ -30,7 +30,7 @@ Make sure you have the following installed:
 
 ### Testing the Frontend with the Backend
 
-If you want to test the frontend with the backend, you can clone the repository [https://github.com/dreamsofcode-io/chatly-web](https://github.com/dreamsofcode-io/chatly-web), install dependencies with `npm i`, and start the development server with `npm run dev`. The frontend will be available on port `:5173`, ready for testing.
+You can access the static test frontend inspired by the legend of '[The Knights of the Round Table](https://en.wikipedia.org/wiki/Knights_of_the_Round_Table)' by navigating to `http://localhost:3000` or the port you’ve configured in your `.env` file.
 
 ## References
 
