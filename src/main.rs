@@ -1,5 +1,7 @@
 mod state;
 
+use std::env;
+use dotenv::dotenv;
 use std::sync::Arc;
 use axum::extract::State;
 use axum::routing::{get};
@@ -60,6 +62,7 @@ async fn handler(State(io): State<SocketIo>) {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    dotenv().ok();
     tracing::subscriber::set_global_default(FmtSubscriber::default())?;
 
     let messages = state::MessageStore::default();
@@ -71,6 +74,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let messages_for_handler = messages.clone();
     io.ns("/", move |socket| on_connect(socket, messages_for_handler.clone()));
 
+    let port = env::var("PORT").unwrap_or_else(|_| "3000".to_string());
+
     let app = axum::Router::new()
         .nest_service("/", ServeDir::new("static"))
         .route("/hello", get(handler))
@@ -81,9 +86,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .layer(layer)
         );
 
-    info!("Starting server on port :3000");
+    info!("Starting server on port :{}", port);
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    let listener = tokio::net::TcpListener::bind(&format!("0.0.0.0:{}", port)).await.unwrap();
     axum::serve(listener, app.into_make_service()).await?;
 
     Ok(())
