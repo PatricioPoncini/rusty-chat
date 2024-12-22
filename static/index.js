@@ -1,20 +1,10 @@
+// ----------------------- Init app functions -----------------------
 const rooms = [
-    "King Arthur",
-    "Sir Lancelot",
-    "Sir Gawain",
-    "Sir Percival",
-    "Sir Galahad",
-    "Sir Bors",
-    "Sir Tristan",
-    "Sir Bedivere",
-    "Sir Kay",
-    "Sir Gareth",
-    "Sir Agravain",
-    "Sir Gaheris",
-    "Sir Lamorak",
-    "Sir Ector",
-    "Sir Palamedes"
+    "Round Table",
+    "Training Camp",
+    "Castle Hall"
 ];
+
 const selectRoomBlock = document.querySelector(".selectRoomBlock");
 
 let select = document.createElement("select");
