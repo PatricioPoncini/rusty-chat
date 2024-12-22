@@ -2,7 +2,7 @@ mod state;
 
 use std::sync::Arc;
 use axum::extract::State;
-use axum::routing::get;
+use axum::routing::{get};
 use serde::{Deserialize, Serialize};
 use socketioxide::extract::{Data, SocketRef};
 use socketioxide::SocketIo;
@@ -11,6 +11,7 @@ use tower_http::cors::CorsLayer;
 use tracing::{info};
 use tracing_subscriber::FmtSubscriber;
 use chrono::{Utc};
+use tower_http::services::ServeDir;
 
 #[derive(Debug, Deserialize)]
 struct MessageIn {
@@ -24,11 +25,11 @@ struct Messages {
 }
 
 async fn on_connect(socket: SocketRef, store: Arc<state::MessageStore>) {
-    info!("Connecting to socket {:?}", socket.id);
+    info!("New user connected");
 
     let store_clone = store.clone();
     socket.on("join", move |socket: SocketRef, Data(room): Data<String>| async move {
-        info!("Connected to room: {:?}", room);
+        info!("User {} connected to room: {:?}", format!("anon-{}", socket.id), room);
 
         let _ = socket.leave_all();
         let _ = socket.join(room.clone());
@@ -38,7 +39,7 @@ async fn on_connect(socket: SocketRef, store: Arc<state::MessageStore>) {
 
     let store_clone = store.clone();
     socket.on("message", move |socket: SocketRef, Data(data): Data<MessageIn>| async move {
-        info!("Received message {:?}", data);
+        info!("Received message {:?} from user {}", data, format!("anon-{}", socket.id));
 
         let response = state::Message {
             text: data.text,
@@ -71,7 +72,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     io.ns("/", move |socket| on_connect(socket, messages_for_handler.clone()));
 
     let app = axum::Router::new()
-        .route("/", get(|| async { "Hello, world!" }))
+        .nest_service("/", ServeDir::new("static"))
         .route("/hello", get(handler))
         .with_state(io)
         .layer(

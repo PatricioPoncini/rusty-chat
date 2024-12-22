@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.selectRoomBlock {
+    margin-bottom: 1.5rem;
+}
+
+select {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #2c3e50;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+#chat-container {
+    width: 90%;
+    max-width: 600px;
+    height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 2px solid #2c3e50;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.message-block {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    background-color: #ecf0f1;
+}
+
+.message-user {
+    color: #3498db;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.message-text {
+    color: #333;
+}
+
+.message-input {
+    width: calc(90% - 100px);
+    max-width: 500px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #2c3e50;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.message-input:focus {
+    border-color: #3498db;
+}
+
+.send-message-button {
+    margin-top: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.send-message-button:hover {
+    background-color: #2980b9;
+}
+
+.send-message-button:active {
+    transform: scale(0.95);
+}
