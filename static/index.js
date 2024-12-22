@@ -92,3 +92,12 @@ function sendMessage() {
     document.getElementById("message").value = "";
     document.getElementById("message").innerHTML = "";
 }
+
+const messageInput = document.getElementById("message");
+
+messageInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+    }
+});
