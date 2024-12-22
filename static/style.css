@@ -70,6 +70,10 @@ select:focus {
     background-color: rgba(228, 215, 182, 0.9);
     font-family: "MedievalSharp", serif;
     border-left: 4px solid #484848;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
 }
 
 .message-user {
